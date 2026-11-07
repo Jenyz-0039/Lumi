@@ -4,7 +4,7 @@ import { renderSideNav } from './components/SideNav.js';
 import { renderOpening } from './sections/OpeningSection.js';
 import { initBackgroundStack, renderBackground } from './sections/BackgroundSection.js';
 import { initVideoFrames, renderVideo } from './sections/VideoSection.js';
-import { renderExpressions } from './sections/ExpressionsSection.js';
+import { initExpressionsV2, renderExpressionsV2 } from './sections/ExpressionsSectionV2.js';
 import { renderActions } from './sections/ActionsSection.js';
 import { initOutfits, renderOutfits } from './sections/OutfitsSection.js';
 import { initScenes, renderScenes } from './sections/ScenesSection.js';
@@ -16,7 +16,7 @@ const renderers = {
   opening: renderOpening,
   background: renderBackground,
   video: renderVideo,
-  expressions: renderExpressions,
+  expressions: renderExpressionsV2,
   actions: renderActions,
   outfits: renderOutfits,
   scenes: renderScenes,
@@ -122,6 +122,7 @@ function initOpeningTimeline() {
 initOpeningTimeline();
 initBackgroundStack();
 initVideoFrames();
+const cleanupExpressionsV2 = initExpressionsV2();
 initScenes();
 initGameInteraction();
 initOutfits();
