@@ -1,0 +1,109 @@
+.section--game {
+  --game-ink: #24232a;
+  --game-blue: #9ccfff;
+  --game-blue-deep: #3979b9;
+  --game-cream: #fffdf7;
+  --game-pink: #ff8fc0;
+  --game-yellow: #ffc84a;
+  min-height: 100svh;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--game-ink);
+  background: #cfeaff !important;
+}
+.section--game .game-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    var(--game-background-image, linear-gradient(180deg, rgba(255,255,255,.45), transparent 42%)),
+    radial-gradient(circle at 18% 18%, rgba(255, 244, 165, .78) 0 8%, transparent 26%),
+    radial-gradient(circle at 84% 30%, rgba(255, 159, 201, .52) 0 9%, transparent 28%),
+    linear-gradient(145deg, #b9dcff 0%, #d9f0ff 46%, #f7e9ff 100%);
+  background-position: center;
+  background-size: cover;
+}
+.section--game .game-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .22;
+  background-image: radial-gradient(rgba(36, 35, 42, .22) .7px, transparent .7px);
+  background-size: 8px 8px;
+  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+}
+.section--game .game-layout { position: relative; width: min(1500px, 100%); min-height: 100svh; margin: 0 auto; }
+.section--game .game-intro { position: absolute; z-index: 4; top: clamp(82px, 11vh, 122px); left: clamp(24px, 6vw, 92px); width: min(330px, 29vw); }
+.section--game .game-intro__index { margin: 0 0 14px; color: var(--game-blue-deep); font-size: 12px; letter-spacing: .12em; }
+.section--game .game-intro h2 { margin: 0; max-width: 7em; font-size: clamp(34px, 4.5vw, 68px); line-height: .98; letter-spacing: -.055em; }
+.section--game .game-intro > p:last-child { margin: 20px 0 0; color: rgba(36, 35, 42, .65); font-size: clamp(14px, 1.25vw, 18px); line-height: 1.65; }
+.section--game .game-character { position: absolute; z-index: 2; left: 57%; top: 51%; width: min(55vw, 720px, 70vh); aspect-ratio: 1; transform: translate(-50%, -48%); filter: drop-shadow(0 28px 24px rgba(57, 84, 125, .18)); }
+.section--game .game-character::before { content: ""; position: absolute; z-index: -1; inset: 14% 4% 4%; border-radius: 50%; background: rgba(255, 255, 255, .3); filter: blur(35px); }
+.section--game .game-character__image { display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none; transform-origin: 50% 68%; }
+.section--game .game-character__face-zone,
+.section--game .game-character__pat-zone,
+.section--game .game-character__mouth-zone { position: absolute; z-index: 3; }
+.section--game .game-character__face-zone { left: 28%; top: 35%; width: 46%; height: 40%; pointer-events: none; }
+.section--game .game-character__pat-zone { left: 24%; top: 17%; width: 54%; height: 35%; touch-action: none; }
+.section--game .game-character__mouth-zone { left: 41%; top: 61%; width: 20%; height: 16%; pointer-events: none; }
+.section--game.is-patting .game-character__image { animation: game-pat-wiggle .46s ease-in-out infinite alternate; }
+.section--game.is-chewing .game-character__image { animation: game-chew .32s ease-in-out infinite alternate; }
+@keyframes game-pat-wiggle { from { transform: rotate(-1deg) translateY(0); } to { transform: rotate(1deg) translateY(5px) scaleY(.99); } }
+@keyframes game-chew { from { transform: translateY(0) scale(1); } to { transform: translateY(3px) scale(1.012, .992); } }
+.section--game .game-food-picker { position: absolute; z-index: 6; left: clamp(24px, 6vw, 92px); bottom: clamp(38px, 7vh, 76px); display: flex; align-items: flex-end; gap: 14px; }
+.section--game .game-food-toggle { display: grid; width: 92px; min-height: 98px; place-items: center; gap: 4px; border: 2px solid var(--game-ink); border-radius: 46% 54% 48% 52% / 52% 45% 55% 48%; padding: 12px 8px; background: var(--game-cream); color: var(--game-ink); box-shadow: 5px 6px 0 rgba(36, 35, 42, .16); transition: transform .2s ease, box-shadow .2s ease; }
+.section--game .game-food-toggle:hover,
+.section--game .game-food-toggle:focus-visible { transform: translateY(-4px) rotate(-2deg); box-shadow: 7px 10px 0 rgba(36, 35, 42, .13); }
+.section--game .game-food-toggle svg { width: 48px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.section--game .game-food-toggle span { font-size: 12px; }
+.section--game .game-food-tray { display: grid; grid-template-columns: repeat(6, minmax(68px, 86px)); gap: 7px; width: max-content; border: 2px solid var(--game-ink); border-radius: 28px 34px 30px 25px; padding: 10px; background: rgba(255, 253, 247, .94); box-shadow: 7px 9px 0 rgba(36, 35, 42, .14); opacity: 0; pointer-events: none; transform: translateX(-18px) scale(.9); transform-origin: left bottom; transition: opacity .2s ease, transform .34s cubic-bezier(.2, 1.5, .4, 1); }
+.section--game.is-food-open .game-food-tray { opacity: 1; pointer-events: auto; transform: none; }
+.section--game .game-food { display: grid; min-width: 0; place-items: center; gap: 2px; border: 0; border-radius: 18px; padding: 4px 3px 6px; background: transparent; color: rgba(36, 35, 42, .68); touch-action: none; user-select: none; }
+.section--game .game-food:hover,
+.section--game .game-food:focus-visible { background: rgba(156, 207, 255, .24); outline: 2px solid rgba(57, 121, 185, .35); }
+.section--game .game-food img { width: 65px; height: 65px; object-fit: contain; pointer-events: none; transition: transform .18s ease; }
+.section--game .game-food:hover img { transform: translateY(-3px) rotate(-2deg); }
+.section--game .game-food span { overflow: hidden; max-width: 100%; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.game-food-drag { --drag-x: 0px; --drag-y: 0px; position: fixed; z-index: 1000; left: 0; top: 0; width: clamp(78px, 8vw, 116px); height: clamp(78px, 8vw, 116px); object-fit: contain; pointer-events: none; user-select: none; transform: translate3d(calc(var(--drag-x) - 50%), calc(var(--drag-y) - 50%), 0) scale(1.03); filter: drop-shadow(0 14px 12px rgba(45, 65, 92, .2)); will-change: transform, opacity; }
+.game-food-drag.is-eaten { opacity: 0; transform: translate3d(calc(var(--drag-x) - 50%), calc(var(--drag-y) - 50%), 0) scale(.08) rotate(12deg); transition: transform .26s cubic-bezier(.35, 0, .8, .25), opacity .22s ease; }
+.game-food-drag.is-cancelled { opacity: 0; transform: translate3d(calc(var(--drag-x) - 50%), calc(var(--drag-y) - 45%), 0) scale(.88); transition: .16s ease; }
+.section--game .game-status { position: absolute; z-index: 4; left: 57%; bottom: clamp(28px, 5vh, 52px); margin: 0; padding: 8px 16px; border-radius: 999px; background: rgba(255, 255, 255, .55); color: rgba(36, 35, 42, .64); font-size: 12px; transform: translateX(-50%); backdrop-filter: blur(8px); }
+.section--game .game-cursor { --cursor-x: -100px; --cursor-y: -100px; position: fixed; z-index: 900; left: 0; top: 0; width: 82px; height: 82px; opacity: 0; pointer-events: none; transform: translate3d(calc(var(--cursor-x) - 16px), calc(var(--cursor-y) - 18px), 0) rotate(-12deg); transform-origin: 18% 18%; transition: opacity .1s ease; }
+.section--game .game-cursor img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.section--game .game-spark { position: absolute; z-index: 1; color: rgba(255, 255, 255, .82); font-family: Georgia, serif; font-size: clamp(30px, 4vw, 60px); pointer-events: none; }
+.section--game .game-spark--one { top: 18%; right: 12%; transform: rotate(12deg); }
+.section--game .game-spark--two { right: 22%; bottom: 16%; color: rgba(255, 200, 74, .72); transform: rotate(-10deg); }
+@media (hover: hover) and (pointer: fine) {
+  .section--game,
+  .section--game button,
+  .section--game [data-game-pat-zone] { cursor: none !important; }
+  .section--game.is-pointer-inside:not(.is-dragging) .game-cursor { opacity: 1; }
+  .section--game.is-patting .game-cursor { transform: translate3d(calc(var(--cursor-x) - 16px), calc(var(--cursor-y) - 18px), 0) rotate(-20deg) scale(.94); }
+}
+@media (max-width: 900px) {
+  .section--game .game-intro { width: min(270px, 34vw); }
+  .section--game .game-character { left: 61%; width: min(64vw, 650px, 66vh); }
+  .section--game .game-food-tray { grid-template-columns: repeat(3, 72px); }
+}
+@media (max-width: 640px) {
+  .section--game { min-height: 820px; }
+  .section--game .game-layout { min-height: 820px; }
+  .section--game .game-intro { top: 76px; left: 20px; width: calc(100% - 40px); text-align: center; }
+  .section--game .game-intro h2 { max-width: none; font-size: clamp(38px, 12vw, 56px); }
+  .section--game .game-intro > p:last-child { width: min(330px, 100%); margin: 14px auto 0; }
+  .section--game .game-character { left: 50%; top: 48%; width: min(104vw, 570px); }
+  .section--game .game-food-picker { left: 16px; right: 16px; bottom: 46px; align-items: flex-end; }
+  .section--game .game-food-toggle { width: 74px; min-height: 82px; flex: 0 0 auto; }
+  .section--game .game-food-toggle svg { width: 38px; }
+  .section--game .game-food-tray { grid-template-columns: repeat(3, minmax(58px, 1fr)); width: min(276px, calc(100vw - 112px)); gap: 3px; padding: 7px; border-radius: 23px; }
+  .section--game .game-food img { width: 52px; height: 52px; }
+  .section--game .game-status { left: 50%; bottom: 148px; white-space: nowrap; }
+  .section--game .game-spark--one { top: 29%; right: 7%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section--game.is-patting .game-character__image,
+  .section--game.is-chewing .game-character__image { animation: none; }
+  .section--game .game-food-tray,
+  .game-food-drag { transition-duration: .01ms !important; }
+}

@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+
+# Build output and caches
+dist/
+build/
+coverage/
+.cache/
+.vite/
+.parcel-cache/
+.turbo/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.orig
+*.rej
+tmp/
+temp/
+
+# Editor and operating-system metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local preview/runtime artifacts
+.preview-server.pid
+*-check.png
+
+# Codex/local task artifacts
+.codex/
+work/
+outputs/
+
+# Older self-contained publishing snapshot with its own nested Git repository.
+# It remains on disk but is not part of the active website or root Git baseline.
+/github-pages-export/
