@@ -14,7 +14,7 @@ export const sections = [
 export const expressions = Array.from({ length: 5 }, (_, index) => ({ id: `expression-${index + 1}`, label: `表情 ${index + 1}`, asset: null }));
 // 当前动作数量仅作为占位数据，后续按正式参考素材数量调整。
 export const actions = Array.from({ length: 4 }, (_, index) => ({ id: `action-${index + 1}`, label: `动作 ${index + 1}`, asset: null }));
-const outfitAsset = (name) => `/public/assets/outfits/${name}.png`;
+const outfitAsset = (name) => `./public/assets/outfits/${name}.png`;
 export const outfits = [
   { id: 'blue-pink-camp', label: '晴空漫游', asset: outfitAsset('blue-pink-camp'), character: outfitAsset('blue-pink-camp-lumi'), primary: '#C9D8F2', arrows: ['#C9D8F2', '#B8CDEA', '#DFDDF3'] },
   { id: 'denim-bow', label: '蝴蝶结日记', asset: outfitAsset('denim-bow'), character: outfitAsset('denim-bow-lumi'), primary: '#8EA9CB', arrows: ['#8EA9CB', '#A9BBD4', '#C0C7DD'] },
