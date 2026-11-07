@@ -5,7 +5,7 @@ import { renderOpening } from './sections/OpeningSection.js';
 import { initBackgroundStack, renderBackground } from './sections/BackgroundSection.js';
 import { initVideoFrames, renderVideo } from './sections/VideoSection.js';
 import { initExpressionsV2, renderExpressionsV2 } from './sections/ExpressionsSectionV2.js';
-import { renderActions } from './sections/ActionsSection.js';
+import { initActionsV2, renderActionsV2 } from './sections/ActionsSectionV2.js';
 import { initOutfits, renderOutfits } from './sections/OutfitsSection.js';
 import { initScenes, renderScenes } from './sections/ScenesSection.js';
 import { renderGame } from './sections/GameSection.js';
@@ -17,7 +17,7 @@ const renderers = {
   background: renderBackground,
   video: renderVideo,
   expressions: renderExpressionsV2,
-  actions: renderActions,
+  actions: renderActionsV2,
   outfits: renderOutfits,
   scenes: renderScenes,
   game: renderGame,
@@ -123,6 +123,7 @@ initOpeningTimeline();
 initBackgroundStack();
 initVideoFrames();
 const cleanupExpressionsV2 = initExpressionsV2();
+const cleanupActionsV2 = initActionsV2();
 initScenes();
 initGameInteraction();
 initOutfits();
@@ -148,7 +149,7 @@ const observer = new IntersectionObserver((entries) => {
     navItems.forEach((item) => item.classList.toggle('is-active', item.dataset.navTarget === id));
     if (current) progress.textContent = `${current.index} / ${sections.length}`;
   });
-}, { threshold: 0.45 });
+}, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
 sectionElements.forEach((section) => observer.observe(section));
 
 document.querySelectorAll('[data-expression-id]').forEach((button) => button.addEventListener('click', () => {
