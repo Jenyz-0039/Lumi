@@ -37,6 +37,7 @@ Desktop.ini
 # Local preview/runtime artifacts
 .preview-server.pid
 *-check.png
+.vercel/
 
 # Codex/local task artifacts
 .codex/
@@ -46,3 +47,6 @@ outputs/
 # Older self-contained publishing snapshot with its own nested Git repository.
 # It remains on disk but is not part of the active website or root Git baseline.
 /github-pages-export/
+
+# Local teammate delivery bundles are integration inputs, not production source.
+/teammate-delivery/

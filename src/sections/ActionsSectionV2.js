@@ -70,8 +70,8 @@ export function initActionsV2() {
   root.dataset.state = 'ready';
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const triggers = [-0.12, 0.1, 0.34, 0.58, 0.8];
   const duration = 0.2;
+  const triggers = [-duration, 0.1, 0.34, 0.58, 0.8];
   let isNearViewport = false;
   let isDocumentVisible = !document.hidden;
   let frameId = 0;
@@ -125,7 +125,10 @@ export function initActionsV2() {
       const bounce = Math.sin(Math.PI * local);
       const y = (1 - local) * 12 - bounce * 4;
       const scale = 0.9 + 0.1 * local + bounce * 0.025;
-      const opacity = local;
+      // Cards enter from outside the clipped viewport. Keeping the card
+      // opaque prevents the transparent white character from washing into
+      // the blue mat while the existing bounce/scale motion still plays.
+      const opacity = 1;
       const extraRotate = (1 - local) * (index % 2 === 0 ? -4 : 4);
       const characterPulse = Math.sin(Math.PI * local);
       let characterY = 0;

@@ -11,7 +11,9 @@
   --ending-v2-cloud-shift: 0px;
   --ending-v2-flower-tilt: 0deg;
   position: relative;
+  display: block;
   height: 300svh;
+  padding: 0;
   isolation: isolate;
   overflow: clip;
   background: linear-gradient(150deg, #80c4f4, #bfe7ff 58%, #f8fcff);
@@ -106,8 +108,9 @@
 }
 
 .section--ending-v2 .ending-v2__line--thank {
+  overflow: visible;
   opacity: var(--ending-v2-thank);
-  clip-path: inset(calc((1 - var(--ending-v2-thank)) * 100%) 0 0 0 round .08em);
+  clip-path: inset(calc((1 - var(--ending-v2-thank)) * 100%) -.16em -.18em -.08em round .08em);
   transform: translateY(var(--ending-v2-thank-y));
 }
 

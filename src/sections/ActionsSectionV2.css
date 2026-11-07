@@ -4,7 +4,9 @@
   --actions-v2-paper: #fffefb;
   --actions-v2-shadow: rgba(53, 84, 126, 0.22);
   position: relative;
+  display: block;
   height: 420svh;
+  padding: 0;
   isolation: isolate;
   overflow: clip;
   background: linear-gradient(180deg, #f7fbff 0%, #eaf5ff 45%, #f9fcff 100%);

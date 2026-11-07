@@ -88,7 +88,7 @@ export function initEndingV2() {
     frameId = 0;
     if (!isNearViewport || !isDocumentVisible || reducedMotion.matches) return;
     const rect = root.getBoundingClientRect();
-    const denominator = Math.max(1, root.offsetHeight - viewportHeight);
+    const denominator = Math.max(1, root.offsetHeight - stage.offsetHeight);
     setVariables(clamp(-rect.top / denominator));
   };
 
