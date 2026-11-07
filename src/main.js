@@ -10,7 +10,7 @@ import { initOutfits, renderOutfits } from './sections/OutfitsSection.js';
 import { initScenes, renderScenes } from './sections/ScenesSection.js';
 import { renderGame } from './sections/GameSection.js';
 import { initGameInteraction } from './sections/GameSection.interactions.js';
-import { renderEnding } from './sections/EndingSection.js';
+import { initEndingV2, renderEndingV2 } from './sections/EndingSectionV2.js';
 
 const renderers = {
   opening: renderOpening,
@@ -21,7 +21,7 @@ const renderers = {
   outfits: renderOutfits,
   scenes: renderScenes,
   game: renderGame,
-  ending: renderEnding,
+  ending: renderEndingV2,
 };
 
 const store = createSiteStore();
@@ -127,6 +127,7 @@ const cleanupActionsV2 = initActionsV2();
 initScenes();
 initGameInteraction();
 initOutfits();
+const cleanupEndingV2 = initEndingV2();
 
 function scrollToSection(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
