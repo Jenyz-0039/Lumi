@@ -1,15 +1,14 @@
 export const sections = [
   { id: 'opening', index: '01', label: '开屏', title: '欢迎来到可颂', description: '开屏占位：后续接入云朵、色块扩散和露米的正式 IP 素材。', type: 'opening' },
   { id: 'background', index: '02', label: '背景介绍', title: 'Lumi露米——让热爱不止一种形状', description: '从日常里微小的惊喜出发，认识一朵不为热爱设限的云。', type: 'background' },
-  { id: 'character', index: '03', label: 'IP 简介', title: '这是露米', description: '角色介绍占位：保留点击前后两套表情，并为轻微变形和反馈动效预留状态接口。', type: 'character' },
-  { id: 'transition-one', index: '04', label: '转场 1', title: '一段面包制作转场', description: '视频占位：等待正式转场视频素材，不使用脚本中的临时参考视频。', type: 'video' },
-  { id: 'expressions', index: '05', label: '表情', title: '露米的五种表情', description: '五个静态相框占位，点击后预留大图查看和关闭按钮。', type: 'expressions' },
-  { id: 'transition-two', index: '06', label: '转场 2', title: '定格，然后继续出发', description: '定格动画占位：等待正式视频或关键帧素材。', type: 'video' },
-  { id: 'actions', index: '07', label: '动作', title: '露米的动作记录', description: '动作图片占位：后续按照参考节奏做滚动蹦跳，并支持反向滚动倒放。', type: 'actions' },
-  { id: 'outfits', index: '08', label: '服装', title: '今天穿哪一套？', description: '挑一套喜欢的衣服，看看露米穿上它的样子。', type: 'outfits' },
-  { id: 'scenes', index: '09', label: '场景', title: '露米的生活场景', description: '五张场景照片随滚动依次展示。', type: 'scenes' },
-  { id: 'game', index: '10', label: '小游戏', title: '和露米玩一会儿', description: '轻量互动占位：预留投喂、摸头、表情变化和音效触发接口。', type: 'game' },
-  { id: 'ending', index: '11', label: '结束', title: '露米，下次见', description: '结束文案占位：后续补充 IP 名称和简短文案。', type: 'ending' },
+  { id: 'transition-one', index: '03', label: '转场 1', title: '一段面包制作转场', description: '视频占位：等待正式转场视频素材，不使用脚本中的临时参考视频。', type: 'video' },
+  { id: 'expressions', index: '04', label: '表情', title: '露米的五种表情', description: '五个静态相框占位，点击后预留大图查看和关闭按钮。', type: 'expressions' },
+  { id: 'transition-two', index: '05', label: '转场 2', title: '定格，然后继续出发', description: '定格动画占位：等待正式视频或关键帧素材。', type: 'video' },
+  { id: 'actions', index: '06', label: '动作', title: '露米的动作记录', description: '动作图片占位：后续按照参考节奏做滚动蹦跳，并支持反向滚动倒放。', type: 'actions' },
+  { id: 'outfits', index: '07', label: '服装', title: '今天穿哪一套？', description: '挑一套喜欢的衣服，看看露米穿上它的样子。', type: 'outfits' },
+  { id: 'scenes', index: '08', label: '场景', title: '露米的生活场景', description: '五张场景照片随滚动依次展示。', type: 'scenes' },
+  { id: 'game', index: '09', label: '小游戏', title: '和露米玩一会儿', description: '轻量互动占位：预留投喂、摸头、表情变化和音效触发接口。', type: 'game' },
+  { id: 'ending', index: '10', label: '结束', title: '露米，下次见', description: '结束文案占位：后续补充 IP 名称和简短文案。', type: 'ending' },
 ];
 
 export const expressions = Array.from({ length: 5 }, (_, index) => ({ id: `expression-${index + 1}`, label: `表情 ${index + 1}`, asset: null }));

@@ -3,7 +3,6 @@ import { createSiteStore } from './state/store.js';
 import { renderSideNav } from './components/SideNav.js';
 import { renderOpening } from './sections/OpeningSection.js';
 import { initBackgroundStack, renderBackground } from './sections/BackgroundSection.js';
-import { renderCharacter } from './sections/CharacterSection.js';
 import { initVideoFrames, renderVideo } from './sections/VideoSection.js';
 import { renderExpressions } from './sections/ExpressionsSection.js';
 import { renderActions } from './sections/ActionsSection.js';
@@ -16,7 +15,6 @@ import { renderEnding } from './sections/EndingSection.js';
 const renderers = {
   opening: renderOpening,
   background: renderBackground,
-  character: renderCharacter,
   video: renderVideo,
   expressions: renderExpressions,
   actions: renderActions,
@@ -32,7 +30,7 @@ const app = document.querySelector('#app');
 app.innerHTML = `
   <header class="site-header">
     <div class="site-brand">可颂 / IP interactive</div>
-    <div class="site-progress" data-progress>01 / 11</div>
+    <div class="site-progress" data-progress>01 / ${sections.length}</div>
   </header>
   ${renderSideNav(sections)}
   <main>
@@ -151,10 +149,6 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.45 });
 sectionElements.forEach((section) => observer.observe(section));
-
-document.querySelector('[data-character-action]')?.addEventListener('click', () => {
-  store.setState({ characterExpression: 'after-click' });
-});
 
 document.querySelectorAll('[data-expression-id]').forEach((button) => button.addEventListener('click', () => {
   store.setState({ selectedExpression: button.dataset.expressionId });
