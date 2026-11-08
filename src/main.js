@@ -27,6 +27,7 @@ const renderers = {
 
 const store = createSiteStore();
 const app = document.querySelector('#app');
+initAudio();
 
 app.innerHTML = `
   <header class="site-header">
@@ -38,7 +39,6 @@ app.innerHTML = `
     ${sections.map((section) => renderers[section.type](section)).join('')}
   </main>
 `;
-initAudio();
 
 const sectionElements = [...document.querySelectorAll('[data-section-id]')];
 const navItems = [...document.querySelectorAll('[data-nav-target]')];

@@ -16,6 +16,7 @@
 .outfits-card__label { display: block; padding-top: 5px; font-size: 13px; letter-spacing: .08em; }
 .outfits-card__label span { color: #9db2c7; }
 .outfits-detail[hidden] { display: none; }
+.outfits-detail img[hidden] { display: none; }
 .outfits-detail { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; overflow: hidden; border-radius: 30px; background: #faf9f3; animation: outfits-fade 380ms ease both; }
 .outfits-detail__halo { position: absolute; width: min(60%, 560px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--detail-color) 40%, white), transparent 68%); }
 .outfits-detail img { position: relative; display: block; max-width: min(70%, 620px); max-height: 610px; width: auto; height: auto; object-fit: contain; animation: outfits-pop 560ms cubic-bezier(.18,1.24,.38,1) both; }

@@ -77,6 +77,7 @@ export function initBackgroundStack() {
     });
 
     const visibleIndex = incoming.reduce((latest, value, index) => value > 0.55 ? index : latest, 0);
+    cards.forEach((card, index) => { card.style.pointerEvents = index === visibleIndex ? 'auto' : 'none'; });
     if (current) current.textContent = String(visibleIndex + 1).padStart(2, '0');
     if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) {
       document.body.dataset.activeSection = 'background';

@@ -44,6 +44,8 @@
 .background-card__meta { display: flex; align-items: center; gap: 12px; color: rgba(41, 49, 74, .68); font-size: 12px; letter-spacing: .08em; }
 .background-card__reveal { display: grid; width: 37px; height: 37px; padding: 0; place-items: center; border: 1.5px solid currentColor; border-radius: 50% 46% 52% 45%; background: transparent; color: inherit; font: inherit; letter-spacing: inherit; rotate: -7deg; cursor: pointer; }
 .background-card__reveal:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.background-card__reveal { position: relative; z-index: 4; }
+.background-card__doodle, .background-card__scribble { pointer-events: none; }
 .background-card__copy > p { max-width: 19em; margin: 26px 0 0; font-size: clamp(18px, 2.05vw, 29px); line-height: 1.62; letter-spacing: -.018em; font-weight: 610; }
 .background-card__doodle { position: absolute; z-index: 3; right: clamp(18px, 3vw, 48px); top: 24px; color: rgba(255, 255, 255, .92); font-family: Georgia, serif; font-size: clamp(38px, 5vw, 70px); line-height: 1; -webkit-text-stroke: 1.5px rgba(59, 68, 97, .35); paint-order: stroke fill; rotate: 10deg; }
 .background-card--yellow .background-card__doodle { left: 28px; right: auto; rotate: -12deg; }

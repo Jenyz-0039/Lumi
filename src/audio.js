@@ -32,16 +32,19 @@ export function playEatingSound() {
 
 export function initAudio() {
   let started = false;
+  background.load();
   const tryStart = () => {
     if (started) return;
     background.play().then(() => {
       started = true;
       document.removeEventListener('pointerdown', tryStart);
+      document.removeEventListener('touchstart', tryStart, true);
       document.removeEventListener('keydown', tryStart);
     }).catch(() => {});
   };
 
-  document.addEventListener('pointerdown', tryStart);
+  document.addEventListener('pointerdown', tryStart, true);
+  document.addEventListener('touchstart', tryStart, { capture: true, passive: true });
   document.addEventListener('keydown', tryStart);
   tryStart();
 

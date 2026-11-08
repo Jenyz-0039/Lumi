@@ -168,6 +168,7 @@ export function initGameInteraction() {
   foodButtons.forEach((button) => button.addEventListener('pointerdown', beginFoodDrag));
 
   const endPat = () => {
+    if (mode !== 'patting') return;
     window.clearTimeout(restoreTimer);
     restoreTimer = window.setTimeout(() => {
       if (mode !== 'patting') return;

@@ -45,6 +45,7 @@ export function initOutfits() {
   const arrows = [...section.querySelectorAll('[data-doodle]')];
   const angles = arrows.map((arrow) => Number(arrow.style.getPropertyValue('--angle').replace('deg', '')));
   let active = null;
+  let selectionVersion = 0;
 
   function aim(item) {
     const target = item && cards.find((card) => card.dataset.outfitId === item.id)?.querySelector('img');
@@ -69,18 +70,38 @@ export function initOutfits() {
     card.addEventListener('focus', () => { active = item; aim(item); });
     card.addEventListener('click', () => {
       active = null;
-      character.src = item.character;
-      character.alt = `露米穿着${item.label}服装的完整形象`;
+      const version = ++selectionVersion;
+      character.hidden = true;
+      character.removeAttribute('src');
+      character.alt = '';
+      detail.setAttribute('aria-busy', 'true');
       detail.style.setProperty('--detail-color', item.primary);
       detail.hidden = false;
       section.classList.add('is-detail');
+      const image = new Image();
+      image.onload = () => {
+        if (version !== selectionVersion || detail.hidden) return;
+        character.src = item.character;
+        character.alt = `露米穿着${item.label}服装的完整形象`;
+        character.hidden = false;
+        detail.removeAttribute('aria-busy');
+      };
+      image.onerror = () => {
+        if (version === selectionVersion) detail.removeAttribute('aria-busy');
+      };
+      image.src = item.character;
       section.querySelector('[data-outfits-back]').focus({ preventScroll: true });
     });
   });
   stage.addEventListener('pointerleave', () => { if (!detail.hidden) return; active = null; aim(null); });
   stage.addEventListener('focusout', (event) => { if (!stage.contains(event.relatedTarget) && detail.hidden) { active = null; aim(null); } });
   section.querySelector('[data-outfits-back]').addEventListener('click', () => {
+    ++selectionVersion;
     detail.hidden = true;
+    character.hidden = true;
+    character.removeAttribute('src');
+    character.alt = '';
+    detail.removeAttribute('aria-busy');
     section.classList.remove('is-detail');
     aim(null);
   });
