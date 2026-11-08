@@ -11,6 +11,7 @@ import { initScenes, renderScenes } from './sections/ScenesSection.js';
 import { renderGame } from './sections/GameSection.js';
 import { initGameInteraction } from './sections/GameSection.interactions.js';
 import { initEndingV2, renderEndingV2 } from './sections/EndingSectionV2.js';
+import { initAudio } from './audio.js';
 
 const renderers = {
   opening: renderOpening,
@@ -37,6 +38,7 @@ app.innerHTML = `
     ${sections.map((section) => renderers[section.type](section)).join('')}
   </main>
 `;
+initAudio();
 
 const sectionElements = [...document.querySelectorAll('[data-section-id]')];
 const navItems = [...document.querySelectorAll('[data-nav-target]')];

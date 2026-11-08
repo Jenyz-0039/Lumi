@@ -32,6 +32,8 @@
 .background-card__image-wrap { position: relative; min-width: 0; margin: 20px; overflow: hidden; border: 2px solid rgba(53, 63, 91, .24); border-radius: 31px 44px 35px 48px / 38px 30px 48px 36px; background: #fff; }
 .background-card--yellow .background-card__image-wrap { order: 2; border-radius: 46px 30px 42px 34px / 33px 48px 32px 44px; }
 .background-card__image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.background-card__image--blur { position: absolute; inset: 0; filter: blur(12px); transform: scale(1.055); transition: opacity .85s ease; pointer-events: none; }
+.background-card.is-revealed .background-card__image--blur { opacity: 0; }
 .background-card--peach .background-card__image { object-position: 52% 48%; }
 .background-card--yellow .background-card__image, .background-card--lilac .background-card__image { object-position: 50% 48%; }
 .background-card__tape { position: absolute; top: 13px; left: 50%; width: 78px; height: 22px; border: 1px solid rgba(100, 82, 57, .12); background: rgba(255, 248, 202, .82); transform: translateX(-50%) rotate(-3deg); box-shadow: 0 3px 8px rgba(80, 63, 40, .08); }
@@ -40,7 +42,8 @@
 .background-card__copy { position: relative; z-index: 2; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(32px, 5vw, 72px) clamp(30px, 5vw, 70px) clamp(34px, 5vw, 68px) clamp(20px, 3vw, 44px); }
 .background-card--yellow .background-card__copy { order: 1; padding-left: clamp(34px, 5vw, 72px); padding-right: clamp(20px, 3vw, 42px); }
 .background-card__meta { display: flex; align-items: center; gap: 12px; color: rgba(41, 49, 74, .68); font-size: 12px; letter-spacing: .08em; }
-.background-card__meta span:first-child { display: grid; width: 37px; height: 37px; place-items: center; border: 1.5px solid currentColor; border-radius: 50% 46% 52% 45%; rotate: -7deg; }
+.background-card__reveal { display: grid; width: 37px; height: 37px; padding: 0; place-items: center; border: 1.5px solid currentColor; border-radius: 50% 46% 52% 45%; background: transparent; color: inherit; font: inherit; letter-spacing: inherit; rotate: -7deg; cursor: pointer; }
+.background-card__reveal:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 .background-card__copy > p { max-width: 19em; margin: 26px 0 0; font-size: clamp(18px, 2.05vw, 29px); line-height: 1.62; letter-spacing: -.018em; font-weight: 610; }
 .background-card__doodle { position: absolute; z-index: 3; right: clamp(18px, 3vw, 48px); top: 24px; color: rgba(255, 255, 255, .92); font-family: Georgia, serif; font-size: clamp(38px, 5vw, 70px); line-height: 1; -webkit-text-stroke: 1.5px rgba(59, 68, 97, .35); paint-order: stroke fill; rotate: 10deg; }
 .background-card--yellow .background-card__doodle { left: 28px; right: auto; rotate: -12deg; }
@@ -69,7 +72,7 @@
   .background-card__image-wrap, .background-card--yellow .background-card__image-wrap { order: 1; margin: 12px 12px 0; border-radius: 23px 31px 22px 29px; }
   .background-card__copy, .background-card--yellow .background-card__copy { order: 2; padding: 20px 24px 24px; }
   .background-card__meta { font-size: 10px; }
-  .background-card__meta span:first-child { width: 30px; height: 30px; }
+  .background-card__reveal { width: 30px; height: 30px; }
   .background-card__copy > p { max-width: none; margin-top: 14px; font-size: clamp(14px, 4vw, 18px); line-height: 1.58; }
   .background-card__doodle, .background-card--yellow .background-card__doodle { top: 9px; left: auto; right: 20px; font-size: 40px; }
   .background-card__scribble { display: none; }
@@ -85,6 +88,7 @@
   .background-card__copy > p { font-size: clamp(16px, 1.8vw, 23px); }
 }
 @media (prefers-reduced-motion: reduce) {
+  .background-card__image--blur { transition: none; }
   .section--background { --background-story-height: auto; min-height: auto; padding: 90px clamp(20px, 7vw, 112px); }
   .background-story__stage { position: relative; height: auto; min-height: 0; overflow: visible; }
   .background-story__header { position: relative; inset: auto; margin-bottom: 42px; }

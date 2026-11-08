@@ -15,6 +15,7 @@ const mimeTypes = {
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
   '.mp4': 'video/mp4',
+  '.mp3': 'audio/mpeg',
 };
 
 const server = http.createServer((request, response) => {

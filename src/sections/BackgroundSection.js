@@ -12,10 +12,11 @@ function renderCard(card, index) {
     <article class="background-card ${card.className}" data-background-card style="--card-index:${index}">
       <div class="background-card__image-wrap">
         <img class="background-card__image" src="${card.image}" alt="${card.alt}" />
+        <img class="background-card__image background-card__image--blur" src="${card.image}" alt="" aria-hidden="true" />
         <span class="background-card__tape" aria-hidden="true"></span>
       </div>
       <div class="background-card__copy">
-        <div class="background-card__meta"><span>${String(index + 1).padStart(2, '0')}</span><span>${card.label}</span></div>
+        <div class="background-card__meta"><button class="background-card__reveal" type="button" data-background-reveal aria-label="显示第${index + 1}张图片的清晰画面" aria-pressed="false">${String(index + 1).padStart(2, '0')}</button><span>${card.label}</span></div>
         <p>${card.copy}</p>
       </div>
       <span class="background-card__doodle" aria-hidden="true">${card.doodle}</span>
@@ -45,6 +46,14 @@ export function initBackgroundStack() {
   const section = story?.closest('[data-section-id="background"]');
   const cards = [...(story?.querySelectorAll('[data-background-card]') || [])];
   const current = story?.querySelector('[data-background-current]');
+  story?.querySelectorAll('[data-background-reveal]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const card = button.closest('[data-background-card]');
+      if (card?.classList.contains('is-revealed')) return;
+      card?.classList.add('is-revealed');
+      button.setAttribute('aria-pressed', 'true');
+    });
+  });
   if (!section || cards.length !== 4 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   let frame = 0;

@@ -12,7 +12,7 @@ const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
 export function renderActionsV2(section) {
   const cards = ACTIONS.map((action, index) => `
-    <figure
+    <button type="button" aria-label="${action.alt}"
       class="actions-v2__card actions-v2__card--${action.key}"
       data-action-card="${action.key}"
       data-action-index="${index}"
@@ -27,7 +27,7 @@ export function renderActionsV2(section) {
         >
       </span>
       <span class="actions-v2__pin" aria-hidden="true"></span>
-    </figure>
+    </button>
   `).join('');
 
   return `

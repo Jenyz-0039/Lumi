@@ -1,3 +1,5 @@
+import { playEatingSound } from '../audio.js';
+
 const ASSET_ROOT = './public/assets/game';
 const expressions = {
   default: `${ASSET_ROOT}/lumi-default.png`,
@@ -76,6 +78,7 @@ export function initGameInteraction() {
     mode = 'chewing';
     root.classList.add('is-chewing');
     setExpression('chewing');
+    playEatingSound();
     setStatus('露米正在认真嚼嚼');
     finishChewing();
   };

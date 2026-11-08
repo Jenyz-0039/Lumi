@@ -23,7 +23,7 @@ export function renderGame(section) {
 
       <div class="game-layout">
         <header class="game-intro">
-          <p class="game-intro__index">10 / 小游戏</p>
+          <p class="game-intro__index">09 / 小游戏</p>
           <h2 id="game-title">和露米玩一会儿</h2>
           <p>拖一份点心到嘴边，或者轻轻摸摸露米的头。</p>
         </header>
